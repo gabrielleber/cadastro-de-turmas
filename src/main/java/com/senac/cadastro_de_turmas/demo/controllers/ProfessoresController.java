@@ -58,7 +58,7 @@ public class ProfessoresController {
 
         this.professorRepository.deleteById(id_professor);
 
-        return professores; 
+        return professores;
     }
 
 
