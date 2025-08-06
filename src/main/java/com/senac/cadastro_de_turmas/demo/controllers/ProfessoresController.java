@@ -1,7 +1,9 @@
 package com.senac.cadastro_de_turmas.demo.controllers;
 
+import com.senac.cadastro_de_turmas.demo.entities.Alunos;
 import com.senac.cadastro_de_turmas.demo.entities.Professores;
 import com.senac.cadastro_de_turmas.demo.repositories.ProfessorRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,6 +61,13 @@ public class ProfessoresController {
         this.professorRepository.deleteById(id_professor);
 
         return professores;
+    }
+
+    @GetMapping("/{id}/alunos")
+    public List<Alunos> buscarAlunosProfessor (@PathVariable Integer id_professor) {
+        Professores professores = this.professorRepository.findById(id_professor).get();
+        return professores.getAlunos();
+
     }
 
 

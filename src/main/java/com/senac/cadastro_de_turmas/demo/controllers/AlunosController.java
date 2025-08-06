@@ -22,6 +22,14 @@ public class AlunosController {
         return this.alunoRepository.findAll();
     }
 
+
+    // Em casa de criar Filtro//
+
+    @GetMapping("/{nome}")
+    public List<Alunos> listarPorNome (@PathVariable String nome) {
+        return this.alunoRepository.findByNome(nome);
+    }
+
     @GetMapping("/{idAluno}")
     public Alunos buscarAlunos(@PathVariable Integer idAluno) {
         return this.alunoRepository.findById(idAluno).get();
